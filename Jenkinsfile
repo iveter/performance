@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'USERS', defaultValue: '1')
+        string(name: 'LOOPS', defaultValue: '1')
+    }
+
     stages {
         stage("Checkout") {
             steps {
@@ -10,12 +15,12 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t cats.jmx -l cats.jtl"
+                sh "jmeter -Jjmeter.save.saveservice.output_format=xml -Jthreads=${USERS}  -Jloops=${LOOPS} -n -t cats.jmx -l cats.jtl"
             }
         }
-        
-        stage('Report'){
-            steps{
+
+        stage('Report') {
+            steps {
                 perfReport filterRegex: '', showTrendGraphs: true, sourceDataFiles: '**/*.jtl'
             }
         }
