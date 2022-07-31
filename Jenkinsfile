@@ -13,5 +13,11 @@ pipeline {
                 sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t cats.jmx -l cats.jtl"
             }
         }
+        
+        stage('Report'){
+            steps{
+                perfReport filterRegex: '', showTrendGraphs: true, sourceDataFiles: '**/*.jtl'
+            }
+        }
     }
 }
