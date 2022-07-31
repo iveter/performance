@@ -10,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t scats.jmx -l cats.jtl"
+                sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t cats.jmx -l cats.jtl"
             }
         }
     }
