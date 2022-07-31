@@ -3,9 +3,9 @@ pipeline {
 
     stages {
         stage("Checkout") {
-            steps {
-                git branch: 'main', url: 'git@github.com:iveter/perfomance.git'
-            }
+//             steps {
+//                 git branch: 'main', url: 'git@github.com:iveter/perfomance.git'
+//             }
         }
 
         stage('Test') {
