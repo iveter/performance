@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'USERS', defaultValue: '1')
-        string(name: 'LOOPS', defaultValue: '1')
+        string(name: 'USERS', defaultValue: '10')
+        string(name: 'LOOPS', defaultValue: '2')
     }
 
     stages {
