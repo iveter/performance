@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'USERS', defaultValue: '1')
+        string(name: 'LOOPS', defaultValue: '1')
+    }
+
     stages {
         stage("Checkout") {
             steps {
@@ -10,7 +15,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bzt '/Users/light/ik/_dev/performance/dogs.jmx -report'
+                bzt "/Users/light/ik/_dev/performance/dogs.jmx -o modules.jmeter.properties.threads=${USERS}  -o modules.jmeter.properties.loops=${LOOPS} -report"
             }
         }
     }
