@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Checkout") {
+            steps {
+                git branch: 'main', url: 'https://github.com/iveter/performance.git'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bzt '/Users/light/ik/_dev/performance/dogs.jmx -report'
+            }
+        }
+    }
+}
