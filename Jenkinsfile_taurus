@@ -15,7 +15,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bzt "/Users/light/ik/_dev/performance/cats.jmx -o modules.jmeter.properties.threads=${USERS}  -o modules.jmeter.properties.loops=${LOOPS} -report"
+                bzt "cats.jmx -o modules.jmeter.properties.threads=${USERS}  -o modules.jmeter.properties.loops=${LOOPS} -report"
             }
         }
     }
